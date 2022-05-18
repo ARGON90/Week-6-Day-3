@@ -156,34 +156,18 @@ function countNodes(rootNode) {
 }
 
 function balancedTree(rootNode) {
-  const queueLeft = [];
-  const queueRight = []
-  queueLeft.push(rootNode.left);
-  queueRight.push(rootNode.right);
-  let leftCount = 0
-  let rightCount = 0
 
-  while (queueLeft.length > 0) { // LEFT
-    for (let i = 0; i < queueLeft.length; i++) {
-      let node = queueLeft.shift();
-      if (node.left) {
-        queueLeft.push(node.left);
-      }
-    }
-    leftCount++
-  }
 
-  while (queueRight.length > 0) { // RIGHT
-    for (let i = 0; i < queueRight.length; i++) {
-      let node = queueRight.shift();
-      if (node.right) {
-        queueRight.push(node.right);
-      }
-    }
-    rightCount++
-  }
-  console.log(leftCount, rightCount)
-
+  //return Math.log2(countNodes(rootNode)) >= (getHeight(rootNode))
+  
+ if ((!rootNode.left && !rootNode.right) || !rootNode) {
+  return true
+}
+  else if (!rootNode.left && getHeight(rootNode.right) > 1) {
+    return false
+  } else if (!rootNode.right && getHeight(rootNode.left) > 1) {
+    return false
+  } else return (Math.abs(getHeight(rootNode.left) - getHeight(rootNode.right))) < 1
 
 }
 
