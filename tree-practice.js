@@ -4,39 +4,128 @@ const { BinarySearchTree, TreeNode } = require('./binary-search-tree.js');
 
 // Practice problems on binary trees
 
-function findMinBST (rootNode) {
+function findMinBST(rootNode) {
+
+  // Put the starting node in a queue
+  const queue = [];
+  queue.push(rootNode);
+  let currentMin = rootNode.val
+
+  // While the queue is not empty
+  while (queue.length > 0) {
+
+    // Dequeue a node and print it
+    let node = queue.shift();
+    if (node.val < currentMin) {
+      currentMin = node.val
+    }
+
+    // Put all of the node's children in the back of the queue
+    if (node.left) {
+      queue.push(node.left);
+    }
+    if (node.right) {
+      queue.push(node.right);
+    }
+  }
+  return currentMin
+}
+
+function findMaxBST(rootNode) {
+  // Put the starting node in a queue
+  const queue = [];
+  queue.push(rootNode);
+  let currentMax = rootNode.val
+
+  // While the queue is not empty
+  while (queue.length > 0) {
+
+    // Dequeue a node and print it
+    let node = queue.shift();
+    if (node.val > currentMax) {
+      currentMax = node.val
+    }
+
+    // Put all of the node's children in the back of the queue
+    if (node.left) {
+      queue.push(node.left);
+    }
+    if (node.right) {
+      queue.push(node.right);
+    }
+  }
+  return currentMax
+}
+
+function findMinBT(rootNode) {
+  // Put the starting node in a queue
+  const queue = [];
+  queue.push(rootNode);
+  let currentMin = rootNode.val
+
+  // While the queue is not empty
+  while (queue.length > 0) {
+
+    // Dequeue a node and print it
+    let node = queue.shift();
+    if (node.val < currentMin) {
+      currentMin = node.val
+    }
+
+    // Put all of the node's children in the back of the queue
+    if (node.left) {
+      queue.push(node.left);
+    }
+    if (node.right) {
+      queue.push(node.right);
+    }
+  }
+  return currentMin
+}
+
+function findMaxBT(rootNode) {
+  // Put the starting node in a queue
+  const queue = [];
+  queue.push(rootNode);
+  let currentMax = rootNode.val
+
+  // While the queue is not empty
+  while (queue.length > 0) {
+
+    // Dequeue a node and print it
+    let node = queue.shift();
+    if (node.val > currentMax) {
+      currentMax = node.val
+    }
+
+    // Put all of the node's children in the back of the queue
+    if (node.left) {
+      queue.push(node.left);
+    }
+    if (node.right) {
+      queue.push(node.right);
+    }
+  }
+  return currentMax
+}
+
+function getHeight(rootNode) {
   // Your code here
 }
 
-function findMaxBST (rootNode) {
+function countNodes(rootNode) {
   // Your code here
 }
 
-function findMinBT (rootNode) {
+function balancedTree(rootNode) {
   // Your code here
 }
 
-function findMaxBT (rootNode) {
+function getParentNode(rootNode, target) {
   // Your code here
 }
 
-function getHeight (rootNode) {
-  // Your code here
-}
-
-function countNodes (rootNode) {
-  // Your code here
-}
-
-function balancedTree (rootNode) {
-  // Your code here
-}
-
-function getParentNode (rootNode, target) {
-  // Your code here
-}
-
-function inOrderPredecessor (rootNode, target) {
+function inOrderPredecessor(rootNode, target) {
   // Your code here
 }
 
@@ -63,14 +152,14 @@ function deleteNodeBST(rootNode, target) {
 }
 
 module.exports = {
-    findMinBST,
-    findMaxBST,
-    findMinBT,
-    findMaxBT,
-    getHeight,
-    countNodes,
-    balancedTree,
-    getParentNode,
-    inOrderPredecessor,
-    deleteNodeBST
+  findMinBST,
+  findMaxBST,
+  findMinBT,
+  findMaxBT,
+  getHeight,
+  countNodes,
+  balancedTree,
+  getParentNode,
+  inOrderPredecessor,
+  deleteNodeBST
 }
