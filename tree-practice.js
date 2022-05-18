@@ -110,7 +110,32 @@ function findMaxBT(rootNode) {
 }
 
 function getHeight(rootNode) {
-  // Your code here
+  const queue = [];
+  queue.push(rootNode);
+  let heightCount = 0
+  let rightCount = 0
+  let leftCount = 0
+
+
+  while (queue.length > 0) {
+
+    let node = queue.pop();
+
+    if (node.left) {
+      queue.push(node.left);
+      leftCount++
+    }
+
+    if (node.right) {
+      queue.push(node.right);
+      rightCount++
+    }
+  }
+  if (rightCount > leftCount) {
+    return rightCount
+  } else {
+    return leftCount
+  }
 }
 
 function countNodes(rootNode) {
