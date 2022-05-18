@@ -112,34 +112,28 @@ function findMaxBT(rootNode) {
 function getHeight(rootNode) {
   const queue = [];
   queue.push(rootNode);
-  let heightCount = 0
-  let rightCount = 0
-  let leftCount = 0
-
+  let count = 0
 
   while (queue.length > 0) {
+    for (let i = 0; i < queue.length; i++) {
+      let node = queue.shift();
 
-    let node = queue.pop();
+      if (node.left) {
+        queue.push(node.left);
+      }
 
-    if (node.left) {
-      queue.push(node.left);
-      leftCount++
+      if (node.right) {
+        queue.push(node.right);
+      }
     }
-
-    if (node.right) {
-      queue.push(node.right);
-      rightCount++
-    }
+    count++
   }
-  if (rightCount > leftCount) {
-    return rightCount
-  } else {
-    return leftCount
-  }
+  return count - 1
 }
 
+
 function countNodes(rootNode) {
-  // Your code here
+  
 }
 
 function balancedTree(rootNode) {
