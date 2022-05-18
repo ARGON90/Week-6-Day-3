@@ -133,7 +133,7 @@ function getHeight(rootNode) {
 
 
 function countNodes(rootNode) {
-  
+
 }
 
 function balancedTree(rootNode) {
