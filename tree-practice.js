@@ -133,11 +133,58 @@ function getHeight(rootNode) {
 
 
 function countNodes(rootNode) {
+  const queue = [];
+  queue.push(rootNode);
+  let count = 1
 
+  while (queue.length > 0) {
+
+    let node = queue.shift();
+
+    if (node.left) {
+      queue.push(node.left);
+      count++
+    }
+
+    if (node.right) {
+      queue.push(node.right);
+      count++
+    }
+
+  }
+  return count
 }
 
 function balancedTree(rootNode) {
-  // Your code here
+  const queueLeft = [];
+  const queueRight = []
+  queueLeft.push(rootNode.left);
+  queueRight.push(rootNode.right);
+  let leftCount = 0
+  let rightCount = 0
+
+  while (queueLeft.length > 0) { // LEFT
+    for (let i = 0; i < queueLeft.length; i++) {
+      let node = queueLeft.shift();
+      if (node.left) {
+        queueLeft.push(node.left);
+      }
+    }
+    leftCount++
+  }
+
+  while (queueRight.length > 0) { // RIGHT
+    for (let i = 0; i < queueRight.length; i++) {
+      let node = queueRight.shift();
+      if (node.right) {
+        queueRight.push(node.right);
+      }
+    }
+    rightCount++
+  }
+  console.log(leftCount, rightCount)
+
+
 }
 
 function getParentNode(rootNode, target) {
