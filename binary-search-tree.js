@@ -110,8 +110,7 @@ class BinarySearchTree {
 
 
         // Put the starting node in a queue
-        const queue = [];
-        queue.push(this.root);
+        const queue = [this.root];
 
         // While the queue is not empty
         while (queue.length > 0) {

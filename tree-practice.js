@@ -159,20 +159,36 @@ function balancedTree(rootNode) {
 
 
   //return Math.log2(countNodes(rootNode)) >= (getHeight(rootNode))
-  
- if ((!rootNode.left && !rootNode.right) || !rootNode) {
-  return true
-}
-  else if (!rootNode.left && getHeight(rootNode.right) > 1) {
+
+  if ((!rootNode.left && !rootNode.right) || !rootNode) { //if there are no branches or there is no root node, it's balanced
+    return true
+  } else if (!rootNode.left && getHeight(rootNode.right) > 1) { //if there's no left branch and the height on the right is less than one it's balanced
     return false
-  } else if (!rootNode.right && getHeight(rootNode.left) > 1) {
+  } else if (!rootNode.right && getHeight(rootNode.left) > 1) { //if there's no right branch and the height on the left is less than one, it's balanced
     return false
-  } else return (Math.abs(getHeight(rootNode.left) - getHeight(rootNode.right))) < 1
+  } else return (Math.abs(getHeight(rootNode.left) - getHeight(rootNode.right))) < 1 // if the height difference is less than one, it's balanced
 
 }
 
 function getParentNode(rootNode, target) {
-  // Your code here
+  const stack = [rootNode];
+  if (rootNode.val === target) return null;
+
+  while (stack.length) {
+    let currentNode = stack.pop();
+    //console.log(currentNode.val)
+    if ((currentNode.left && currentNode.left.val === target)
+      || (currentNode.right && currentNode.right.val === target)) {
+      return currentNode
+    }
+    if (currentNode.left) {
+      stack.push(currentNode.left)
+    }
+    if (currentNode.right) {
+      stack.push(currentNode.right)
+    }
+  }
+  return undefined;
 }
 
 function inOrderPredecessor(rootNode, target) {
